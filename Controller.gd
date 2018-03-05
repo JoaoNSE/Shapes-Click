@@ -22,6 +22,9 @@ func _ready():
 	#get_parent().get_node("Linha").points.resize(0)
 
 func _process(delta):
+	if Input.is_action_pressed("ui_down"):
+		print(shapes)
+	
 	if Input.is_action_pressed("Clique_Cancela"):
 		limpar()
 		
@@ -38,6 +41,7 @@ func add_shape(node):
 			return
 		shapes.append(node)
 		pontos.append(node.position)
+		node.set_selection(true)
 		if linha == null:
 			linha = linha_preload.instance()
 			get_parent().add_child(linha)
@@ -48,6 +52,8 @@ func limpar():
 	if linha != null:
 		linha.queue_free()
 		linha = null
+	for s in shapes:
+		s.set_selection(false)
 	shapes.clear()
 	pontos.clear()
 	

@@ -9,17 +9,13 @@ var controller
 var tipo = "Quadrado"
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	controller = get_parent().get_node("Controller")
-	pass
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
-
-
+	#GAMBIARRA PRA FAZER O SHADER NÃO AFETAR OS OUTROS
+	#OBJETOS QUE COMPARTILHAM O MESMO SHADER
+	var temp_mat = material.duplicate()
+	material = temp_mat
+	
+	
 func _on_Quadrado_input_event(viewport, event, shape_idx):
 	if event.is_action("Clique"):
 		controller.add_shape(self)
@@ -27,3 +23,6 @@ func _on_Quadrado_input_event(viewport, event, shape_idx):
 func pontua():
 	print("GANHOU PONTOOOS")
 	queue_free()
+	
+func set_selection(selection):
+	material.set_shader_param("active", selection)
