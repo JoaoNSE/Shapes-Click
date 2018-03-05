@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/depressionTable.png-0890257da8e8b045c2d6eae679f28416.stex"
+path="res://.import/glowFIlter.jpg-4908ea47e55fc93c8e4cf94627c58005.stex"
 
 [deps]
 
-source_file="res://depressionTable.png"
-source_md5="426977299cd74b1ea984a2abde3f1ed1"
+source_file="res://Sprites/glowFIlter.jpg"
+source_md5="52a238e900d8a64d830ff6faa95adc99"
 
-dest_files=[ "res://.import/depressionTable.png-0890257da8e8b045c2d6eae679f28416.stex" ]
-dest_md5="fa23323cf498041dc4d36c4e8a5ba041"
+dest_files=[ "res://.import/glowFIlter.jpg-4908ea47e55fc93c8e4cf94627c58005.stex" ]
+dest_md5="e452cc9a3076cb780c5a2d3bf255bbb7"
 
 [params]
 

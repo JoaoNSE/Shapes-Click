@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/square.png-51b8b31f216285d75f625619e7157806.stex"
+path="res://.import/blurFilter2.jpg-c0c128ff9395d106d469c5c00ca4ca7b.stex"
 
 [deps]
 
-source_file="res://square.png"
-source_md5="01113f8d245499bacb932d7f22f9d5db"
+source_file="res://Sprites/blurFilter2.jpg"
+source_md5="87b0411e3f597e6d1714804ab6043c1b"
 
-dest_files=[ "res://.import/square.png-51b8b31f216285d75f625619e7157806.stex" ]
-dest_md5="899bf5d3bdcb4d0b25b86210a995aa52"
+dest_files=[ "res://.import/blurFilter2.jpg-c0c128ff9395d106d469c5c00ca4ca7b.stex" ]
+dest_md5="b701fabf324f72e7bd75bb49019b9950"
 
 [params]
 

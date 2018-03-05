@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spellun-sprite.png-4eab043edd76a7a8de83d630df5b932a.stex"
+path="res://.import/depressionTable.png-77fca69fe5e9bcc0a439a0878f31dbeb.stex"
 
 [deps]
 
-source_file="res://spellun-sprite.png"
-source_md5="d9b58062a5f2397ee0fbebfd6cd283e2"
+source_file="res://Sprites/depressionTable.png"
+source_md5="426977299cd74b1ea984a2abde3f1ed1"
 
-dest_files=[ "res://.import/spellun-sprite.png-4eab043edd76a7a8de83d630df5b932a.stex" ]
-dest_md5="55f2bb3089beae0c7cd00924a383457d"
+dest_files=[ "res://.import/depressionTable.png-77fca69fe5e9bcc0a439a0878f31dbeb.stex" ]
+dest_md5="fa23323cf498041dc4d36c4e8a5ba041"
 
 [params]
 

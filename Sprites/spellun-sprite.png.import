@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blurFilter2.jpg-ff2e56d87c8ae8571dda69b35a75fa17.stex"
+path="res://.import/spellun-sprite.png-66576209e83a990ab3cdd3357651c8a5.stex"
 
 [deps]
 
-source_file="res://blurFilter2.jpg"
-source_md5="87b0411e3f597e6d1714804ab6043c1b"
+source_file="res://Sprites/spellun-sprite.png"
+source_md5="d9b58062a5f2397ee0fbebfd6cd283e2"
 
-dest_files=[ "res://.import/blurFilter2.jpg-ff2e56d87c8ae8571dda69b35a75fa17.stex" ]
-dest_md5="b701fabf324f72e7bd75bb49019b9950"
+dest_files=[ "res://.import/spellun-sprite.png-66576209e83a990ab3cdd3357651c8a5.stex" ]
+dest_md5="55f2bb3089beae0c7cd00924a383457d"
 
 [params]
 

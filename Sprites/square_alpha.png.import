@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/glowFIlter.jpg-4bc08356c1910616b3c1efdac0a7888d.stex"
+path="res://.import/square_alpha.png-c975980a4b24c04c5dbbaa5ca87ce61f.stex"
 
 [deps]
 
-source_file="res://glowFIlter.jpg"
-source_md5="52a238e900d8a64d830ff6faa95adc99"
+source_file="res://Sprites/square_alpha.png"
+source_md5="9d1805d46cd776e427bc2b2aadab4d96"
 
-dest_files=[ "res://.import/glowFIlter.jpg-4bc08356c1910616b3c1efdac0a7888d.stex" ]
-dest_md5="e452cc9a3076cb780c5a2d3bf255bbb7"
+dest_files=[ "res://.import/square_alpha.png-c975980a4b24c04c5dbbaa5ca87ce61f.stex" ]
+dest_md5="f4864cb0ffd9dec98fe96dd98b7e8efc"
 
 [params]
 

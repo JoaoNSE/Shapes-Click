@@ -4,7 +4,7 @@ extends Node
 # var a = 2
 # var b = "textvar"
 
-var linha_preload = preload("res://Linha.tscn")
+var linha_preload = preload("res://Scenes/Linha.tscn")
 
 var linha = null
 
