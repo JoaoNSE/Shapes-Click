@@ -6,7 +6,7 @@ extends Area2D
 
 var controller
 
-var tipo = "Quadrado"
+export(String) var tipo
 
 func _ready():
 	controller = get_parent().get_node("Controller")

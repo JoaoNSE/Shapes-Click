@@ -4,7 +4,7 @@
 [ext_resource path="res://OutlineMaterial.tres" type="Material" id=2]
 [ext_resource path="res://square_alpha.png" type="Texture" id=3]
 [ext_resource path="res://OutlineTest.gd" type="Script" id=4]
-[ext_resource path="res://Quadrado.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Shape.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
 
@@ -23,13 +23,16 @@ _sections_unfolded = [ "Material" ]
 [node name="Quadrado3" parent="." index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 204.487, 384.981 )
+tipo = null
 
 [node name="Quadrado" parent="." index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 184.038, 170.406 )
+tipo = null
 
 [node name="Quadrado2" parent="." index="4" instance=ExtResource( 5 )]
 
 position = Vector2( 463.503, 218.119 )
+tipo = null
 
 

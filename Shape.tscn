@@ -1,15 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Quadrado.gd" type="Script" id=1]
-[ext_resource path="res://square_alpha.png" type="Texture" id=2]
+[ext_resource path="res://blurFilter2.jpg" type="Texture" id=1]
+[ext_resource path="res://Quadrado.gd" type="Script" id=2]
+[ext_resource path="res://square_alpha.png" type="Texture" id=3]
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=1]
 
 code = "shader_type canvas_item;
 
 uniform float outline_width=1.0;
 uniform vec4 outline_color=vec4(0.4,0.56,0.35,1);
 uniform bool active = false;
+
+uniform sampler2D blurr;
 
 varying vec2 vert;
 
@@ -33,7 +36,8 @@ void fragment() {
 	//COLOR.a = texture(TEXTURE, SCREEN_UV).a * texture(sText, UV).a;
 	//COLOR.a = alpha;
 	if (active) {
-		vec4 col = texture(TEXTURE,UV);
+		//vec4 col = texture(TEXTURE,UV);
+		vec4 col = texture(TEXTURE, UV + vec2(0, sin(vert.x+TIME*8.0)/80.0));
 		vec2 ps = TEXTURE_PIXEL_SIZE;
 		float a;
 		float maxa=col.a;
@@ -51,31 +55,37 @@ void fragment() {
 		maxa=max(a,maxa); 
 		mina=min(a,mina);
 		
-		//col = texture(TEXTURE, UV + vec2(0, sin(vert.x+TIME*10.0)/80.0));
-		COLOR=mix(col,outline_color,maxa-mina);
+		vec4 cor = outline_color + texture(blurr, UV+0.5);
+		//outline_color = vec4(1.0, 1.0, 1.0, 1.0);
+		
+		col=mix(col,cor,maxa-mina);
+		//COLOR = mix(col, vec4(coll.rgb, col.a), radius*20.0);
+		COLOR=col;
+		//COLOR = texture(TEXTURE, UV + vec2(0, sin(vert.x+TIME*8.0)/80.0));
 	} else {
 		COLOR = texture(TEXTURE, UV);
 		//COLOR = texture(TEXTURE, UV + vec2(0, sin(vert.x+TIME*8.0)/80.0));
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
-shader = SubResource( 5 )
-shader_param/outline_width = 4.0
-shader_param/outline_color = Plane( 0.25, 0.6, 0.25, 0.8 )
+shader = SubResource( 1 )
+shader_param/outline_width = 2.0
+shader_param/outline_color = Plane( 0.6, 0.25, 0.25, 0.8 )
 shader_param/active = false
+shader_param/blurr = ExtResource( 1 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
 [node name="Quadrado" type="Area2D" index="0"]
 
-material = SubResource( 6 )
+material = SubResource( 2 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -83,18 +93,19 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 _sections_unfolded = [ "Material" ]
+tipo = "Quadrado"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
 use_parent_material = true
 position = Vector2( 0, 0.487679 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Material" ]
 
 [connection signal="input_event" from="." to="." method="_on_Quadrado_input_event"]
