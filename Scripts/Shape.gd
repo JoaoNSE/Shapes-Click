@@ -7,6 +7,10 @@ extends Area2D
 var controller
 
 export(String) var tipo
+export(int) var pontos
+export(float) var multiplicador
+
+var canHoverDeselect = true
 
 func _ready():
 	controller = get_parent().get_node("Controller")
@@ -26,3 +30,16 @@ func pontua():
 	
 func set_selection(selection):
 	material.set_shader_param("active", selection)
+	canHoverDeselect = !selection
+
+func set_hover_selection(selection):
+	material.set_shader_param("active", selection)
+	canHoverDeselect = true
+	
+func _on_Shape_mouse_entered():
+	if canHoverDeselect:
+		set_hover_selection(true)
+	
+func _on_Shape_mouse_exited():
+	if canHoverDeselect:
+		set_hover_selection(false)

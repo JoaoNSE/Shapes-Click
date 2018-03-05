@@ -4,10 +4,6 @@
 [ext_resource path="res://Scripts/Shape.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/square_alpha.png" type="Texture" id=3]
 
-
-
-
-
 [sub_resource type="Shader" id=1]
 
 code = "shader_type canvas_item;
@@ -100,6 +96,8 @@ audio_bus_name = "Master"
 script = ExtResource( 2 )
 _sections_unfolded = [ "Material" ]
 tipo = "Quadrado"
+pontos = null
+multiplicador = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -113,5 +111,9 @@ texture = ExtResource( 3 )
 _sections_unfolded = [ "Material" ]
 
 [connection signal="input_event" from="." to="." method="_on_Quadrado_input_event"]
+
+[connection signal="mouse_entered" from="." to="." method="_on_Shape_mouse_entered"]
+
+[connection signal="mouse_exited" from="." to="." method="_on_Shape_mouse_exited"]
 
 
