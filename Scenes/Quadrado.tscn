@@ -83,7 +83,7 @@ _sections_unfolded = [ "shader_param" ]
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="Quadrado" type="Area2D" index="0"]
+[node name="Quadrado" type="Area2D"]
 
 material = SubResource( 2 )
 input_pickable = true
@@ -96,8 +96,8 @@ audio_bus_name = "Master"
 script = ExtResource( 2 )
 _sections_unfolded = [ "Material" ]
 tipo = "Quadrado"
-pontos = null
-multiplicador = null
+pontos = 1
+multiplicador = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 

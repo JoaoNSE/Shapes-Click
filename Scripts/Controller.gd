@@ -8,20 +8,30 @@ var linha_preload = preload("res://Scenes/Linha.tscn")
 
 var linha = null
 
+#lista de shapes
 var shapes
+#lista das posições dos shapes
 var pontos
 
+#numero de pontos do jogador
+var player_points = 0
+var n_destroyed = 0
 
+var GUI
+var pontosLabel
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	GUI = get_parent().get_node("CanvasLayer/GUI")
+	pontosLabel = GUI.get_node("HBoxContainer/Panel/Pontos_lbl")
 	set_process(true)
 	shapes = []
 	pontos = []
 	#get_parent().get_node("Linha").points.resize(0)
 
 func _process(delta):
+	pontosLabel.text = str(player_points)
 	if Input.is_action_pressed("ui_down"):
 		print(shapes)
 	
@@ -49,6 +59,7 @@ func add_shape(node):
 		limpar()
 		
 func limpar():
+	n_destroyed = 0
 	if linha != null:
 		linha.queue_free()
 		linha = null
@@ -61,3 +72,4 @@ func explode():
 	for s in shapes:
 		s.pontua()
 	limpar()
+	n_destroyed = 0

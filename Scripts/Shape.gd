@@ -8,7 +8,7 @@ var controller
 
 export(String) var tipo
 export(int) var pontos
-export(float) var multiplicador
+export(int) var multiplicador
 
 var canHoverDeselect = true
 
@@ -26,6 +26,9 @@ func _on_Quadrado_input_event(viewport, event, shape_idx):
 
 func pontua():
 	print("GANHOU PONTOOOS")
+	controller.player_points += pontos + multiplicador*controller.n_destroyed
+	controller.n_destroyed += 1
+	print(controller.player_points)
 	queue_free()
 	
 func set_selection(selection):
