@@ -9,6 +9,7 @@ var controller
 export(String) var tipo
 export(int) var pontos
 export(int) var multiplicador
+export(float) var speed = 0.0
 
 var canHoverDeselect = true
 
@@ -18,6 +19,10 @@ func _ready():
 	#OBJETOS QUE COMPARTILHAM O MESMO SHADER
 	var temp_mat = material.duplicate()
 	material = temp_mat
+	set_process(true)
+	
+func _process(delta):
+	position.y += speed
 	
 	
 func _on_Quadrado_input_event(viewport, event, shape_idx):

@@ -42,6 +42,9 @@ func _process(delta):
 		explode()
 	
 	if linha != null and shapes.size() > 0:
+		for i in range(shapes.size()):
+			pontos[i] = shapes[i].position
+			
 		linha.points = PoolVector2Array(pontos)
 		
 

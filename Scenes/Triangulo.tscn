@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Sprites/blurFilter2.jpg" type="Texture" id=1]
 [ext_resource path="res://Scripts/Shape.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/square_alpha.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/triangle_alpha.png" type="Texture" id=3]
 
 [sub_resource type="Shader" id=1]
 
@@ -78,12 +78,12 @@ shader_param/active = false
 shader_param/blurr = ExtResource( 1 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 32 )
+points = PoolVector2Array( 0, -30, 30, 0, -30, 0 )
 
-[node name="Quadrado" type="Area2D"]
+[node name="Triangulo" type="Area2D" index="0"]
 
 material = SubResource( 2 )
 input_pickable = true
@@ -95,21 +95,23 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 2 )
 _sections_unfolded = [ "Material" ]
-tipo = "Quadrado"
+tipo = "Triangulo"
 pontos = 1
-multiplicador = 2
-speed = 2.0
+multiplicador = 1
+speed = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
-
-shape = SubResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="." index="1"]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
 use_parent_material = true
-position = Vector2( 0, 0.487679 )
+position = Vector2( 0, 15 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Material" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0, 15 )
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="input_event" from="." to="." method="_on_Quadrado_input_event"]
 
