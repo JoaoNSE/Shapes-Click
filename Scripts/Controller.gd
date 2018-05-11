@@ -72,7 +72,9 @@ func limpar():
 	pontos.clear()
 	
 func explode():
-	for s in shapes:
-		s.pontua()
+	for i in range(shapes.size()):
+		if i == shapes.size()-1:
+			shapes[i].last = true
+		shapes[i].pontua()
 	limpar()
 	n_destroyed = 0

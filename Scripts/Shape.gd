@@ -7,8 +7,10 @@ extends Area2D
 #Components
 var controller
 
+
 #preloads
 var particleSys = preload("res://Scenes/ShapesParticleSys.tscn")
+var pontosAdiquiridosLabel = preload("res://Scenes/PontosAdiquiridos.tscn")
 
 #Eports
 export(String) var tipo
@@ -17,6 +19,7 @@ export(int) var multiplicador
 export(float) var speed = 0.0
 
 var canHoverDeselect = true
+var last = false
 
 func _ready():
 	controller = get_parent().get_node("Controller")
@@ -35,10 +38,15 @@ func _on_Quadrado_input_event(viewport, event, shape_idx):
 		controller.add_shape(self)
 
 func pontua():
-	print("GANHOU PONTOOOS")
-	controller.player_points += pontos + multiplicador*controller.n_destroyed
+	var points_add = pontos + multiplicador*controller.n_destroyed
+	controller.player_points += points_add
+	if last:
+		var pal = pontosAdiquiridosLabel.instance()
+		pal.pontos = points_add
+		pal.position = position
+		get_parent().add_child(pal)
+	
 	controller.n_destroyed += 1
-	print(controller.player_points)
 	
 	var part = particleSys.instance()
 	part.position = position
