@@ -4,8 +4,13 @@ extends Area2D
 # var a = 2
 # var b = "textvar"
 
+#Components
 var controller
 
+#preloads
+var particleSys = preload("res://Scenes/ShapesParticleSys.tscn")
+
+#Eports
 export(String) var tipo
 export(int) var pontos
 export(int) var multiplicador
@@ -34,6 +39,12 @@ func pontua():
 	controller.player_points += pontos + multiplicador*controller.n_destroyed
 	controller.n_destroyed += 1
 	print(controller.player_points)
+	
+	var part = particleSys.instance()
+	part.position = position
+	part.emitting = true
+	get_parent().add_child(part)
+	
 	queue_free()
 	
 func set_selection(selection):
