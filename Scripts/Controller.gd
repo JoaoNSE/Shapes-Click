@@ -1,9 +1,5 @@
 extends Node
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 var linha_preload = preload("res://Scenes/Linha.tscn")
 
 var linha = null
@@ -12,6 +8,9 @@ var linha = null
 var shapes
 #lista das posições dos shapes
 var pontos
+#nível atual
+var level
+
 
 #numero de pontos do jogador
 var player_points = 0
@@ -21,8 +20,6 @@ var GUI
 var pontosLabel
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	GUI = get_parent().get_node("CanvasLayer/GUI")
 	pontosLabel = GUI.get_node("HBoxContainer/Panel/Pontos_lbl")
 	set_process(true)

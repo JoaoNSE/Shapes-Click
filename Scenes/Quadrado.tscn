@@ -1,82 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Sprites/blurFilter2.jpg" type="Texture" id=1]
+[ext_resource path="res://Shaders/OutlineShader.shader" type="Shader" id=1]
 [ext_resource path="res://Scripts/Shape.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/square_alpha.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/square_ink.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/ShapesParticleSys.tscn" type="PackedScene" id=4]
-
-[sub_resource type="Shader" id=1]
-
-code = "shader_type canvas_item;
-
-uniform float outline_width=1.0;
-uniform vec4 outline_color=vec4(0.4,0.56,0.35,1);
-uniform bool active = false;
-
-uniform sampler2D blurr;
-
-varying vec2 vert;
-
-void vertex() {
-	//VERTEX *= 2.0;
-	vert = VERTEX;
-}
-
-void fragment() {
-	
-	/*float alpha = 4.0*texture(TEXTURE, UV).a;
-	alpha -= texture(TEXTURE, UV + vec2(stepSizeX, 0.0)).a;
-	alpha -= texture(TEXTURE, UV + vec2(-stepSizeX, 0.0)).a;
-	alpha -= texture(TEXTURE, UV + vec2(0.0, stepSizeY)).a;
-	alpha -= texture(TEXTURE, UV + vec2(0.0, -stepSizeY)).a;
-	
-	COLOR = vec4(0.8, 0.0, 0.4, alpha);*/
-	
-	//COLOR = texture(TEXTURE, UV + vec2(0, sin(vert.x+TIME*10.0)/80.0));
-	//COLOR = texture(TEXTURE, SCREEN_UV);
-	//COLOR.a = texture(TEXTURE, SCREEN_UV).a * texture(sText, UV).a;
-	//COLOR.a = alpha;
-	if (active) {
-		//vec4 col = texture(TEXTURE,UV);
-		vec4 col = texture(TEXTURE, UV + vec2(0, sin(vert.x+TIME*8.0)/80.0));
-		vec2 ps = TEXTURE_PIXEL_SIZE;
-		float a;
-		float maxa=col.a;
-		float mina=col.a;
-		a=texture(TEXTURE,UV+vec2(0,-outline_width)*ps).a;
-		maxa=max(a,maxa); 
-		mina=min(a,mina);
-		a=texture(TEXTURE,UV+vec2(0,outline_width)*ps).a;
-		maxa=max(a,maxa); 
-		mina=min(a,mina);
-		a=texture(TEXTURE,UV+vec2(-outline_width,0)*ps).a;
-		maxa=max(a,maxa); 
-		mina=min(a,mina);
-		a=texture(TEXTURE,UV+vec2(outline_width,0)*ps).a;
-		maxa=max(a,maxa); 
-		mina=min(a,mina);
-		
-		vec4 cor = outline_color + texture(blurr, UV+0.5);
-		//outline_color = vec4(1.0, 1.0, 1.0, 1.0);
-		
-		col=mix(col,cor,maxa-mina);
-		//COLOR = mix(col, vec4(coll.rgb, col.a), radius*20.0);
-		COLOR=col;
-		//COLOR = texture(TEXTURE, UV + vec2(0, sin(vert.x+TIME*8.0)/80.0));
-	} else {
-		COLOR = texture(TEXTURE, UV);
-		//COLOR = texture(TEXTURE, UV + vec2(0, sin(vert.x+TIME*8.0)/80.0));
-	}
-}"
 
 [sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
-shader = SubResource( 1 )
+shader = ExtResource( 1 )
 shader_param/outline_width = 2.0
-shader_param/outline_color = Plane( 0.6, 0.25, 0.25, 0.8 )
+shader_param/outline_color = Plane( 0.25, 0.6, 0.25, 0.8 )
 shader_param/active = false
-shader_param/blurr = ExtResource( 1 )
 _sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="RectangleShape2D" id=3]

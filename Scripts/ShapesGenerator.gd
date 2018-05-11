@@ -33,6 +33,7 @@ func _on_Timer_timeout():
 	var i = rand_range(0, shapes.size())
 	var shap = shapes[i].instance()
 	shap.position = shape_exit.position
+	randomize()
 	shap.speed = rand_range(shap.speed-shap.speed*0.3, shap.speed+shap.speed*0.3)
 	get_parent().add_child(shap)
 	pass # replace with function body
